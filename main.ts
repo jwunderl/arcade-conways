@@ -1,6 +1,7 @@
 
 //% weight=99 color="#2d730f" icon="\uf471"
 //% block="Life"
+//% groups='["Game of Life", "Shapes"]'
 namespace conways {
     export enum Direction {
         //% block="north"
@@ -74,34 +75,14 @@ namespace conways {
 
     const width = screen.width;
     const height = screen.height;
-    scene.setBackgroundImage(image.create(width, height));
-
-    // test1();
-    // test2();
-    test3();
-
-    function test1() {
-        createRandom(4000);
-    }
-
-    function test2() {
-        for (let i = 0; i < 15; ++i) {
-            for (let j = 0; j < 6; ++j) {
-                createOscillator(Oscillator.Pentadecathlon, 8 + 10 * i, 5 + 20 * j);
-            }
-        }
-    }
-    function test3() {
-        for (let i = 0; i < 5; ++i) {
-            createMotion(Motion.Gospers, 15, 2 + i * 25);
-        }
-    }
 
     // buffers[bufferNum][x][y] corresponds to whether the cell at location (x,y)
     // was alive in the given buffer
     let buffers: boolean[][][];
     let currentBuffer: number;
 
+    //% block
+    //% group="Game of Life"
     export function nextGeneration() {
         init();
         // leave 1 pixel of unused edge on each side
@@ -116,6 +97,7 @@ namespace conways {
     }
 
     //% block="is alive at $x $y"
+    //% group="Game of Life"
     export function getState(x: number, y: number) {
         init();
         const lastGeneration = buffers[currentBuffer % 2];
@@ -123,8 +105,8 @@ namespace conways {
     }
 
     //% block="is alive $direction of $x $y"
+    //% group="Game of Life"
     export function getStateInDirection(direction: conways.Direction, x: number, y: number) {
-        const lastGeneration = buffers[currentBuffer % 2];
         switch (direction) {
             case Direction.North:
                 return getState(x, y - 1);
@@ -149,11 +131,14 @@ namespace conways {
     }
 
     //% block="set alive at $x $y $alive"
+    //% group="Game of Life"
     export function setState(x: number, y: number, alive: boolean) {
         init();
+
         const lastGeneration = buffers[currentBuffer % 2];
         const currGeneration = buffers[(currentBuffer + 1) % 2];
         const bkgd = scene.backgroundImage();
+
         if (alive) {
             currGeneration[x][y] = true;
             if (!lastGeneration[x][y]) {
@@ -230,6 +215,8 @@ namespace conways {
         }
     }
 
+    //% block="create still life $toDisplay x $x y $y"
+    //% group="Shapes"
     export function createStillLife(toDisplay: StillLife,
         x: number,
         y: number,
@@ -290,6 +277,8 @@ namespace conways {
         src.drawImage(display, x, y);
     }
 
+    //% block="create oscillator $toDisplay x $x y $y"
+    //% group="Shapes"
     export function createOscillator(toDisplay: Oscillator,
         x: number,
         y: number,
@@ -364,6 +353,8 @@ namespace conways {
         src.drawImage(display, x, y);
     }
 
+    //% block="create motion $toDisplay x $x y $y"
+    //% group="Shapes"
     export function createMotion(toDisplay: Motion,
         x: number,
         y: number,
@@ -471,6 +462,8 @@ namespace conways {
         src.drawImage(display, x, y);
     }
 
+    //% block="create odd cell $toDisplay x $x y $y"
+    //% group="Shapes"
     export function createOddCell(toDisplay: OddCell,
         x: number,
         y: number,
