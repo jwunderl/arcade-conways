@@ -121,6 +121,7 @@ namespace conways {
     //% weight=90
     export function nextGeneration() {
         init();
+
         // leave 1 pixel of unused edge on each side
         // to avoid having to deal with oob checking
         for (let col = 1; col < width - 1; ++col) {
@@ -142,12 +143,22 @@ namespace conways {
         return !!lastGeneration[col][row];
     }
 
-    //% block="is alive $direction of $col $row"
+    //% block="$dir"
+    //% blockId="conwaysDirectionEnum"
+    //% group="Game of Life"
+    //% weight=0
+    //% shim=TD_ID
+    export function conwaysDir(dir: conways.Direction) {
+        return dir
+    }
+
+    //% block="is alive $dir of $col $row"
     //% blockId="conwaysGetStateInDirection"
+    //% dir.defl="conwaysDirectionEnum"
     //% group="Game of Life"
     //% weight=75
-    export function getStateInDirection(direction: conways.Direction, col: number, row: number) {
-        switch (direction) {
+    export function getStateInDirection(dir: conways.Direction, col: number, row: number) {
+        switch (dir) {
             case Direction.North:
                 return getState(col, row - 1);
             case Direction.NorthEast:
