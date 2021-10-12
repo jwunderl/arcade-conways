@@ -1,7 +1,7 @@
 
 // test1();
-// test2();
-test3();
+test2();
+// test3();
 
 function test1() {
     conways.createRandom(4000);

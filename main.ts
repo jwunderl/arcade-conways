@@ -77,13 +77,16 @@ namespace conways {
     const height = screen.height;
     let updateHandler: (x: number, y: number) => void;
 
-
     //% block="on generation update $col $row"
     //% draggableParameters="reporter"
     //% group="Game of Life"
     //% weight=50
     export function onGenerationUpdate(handler: (col: number, row: number) => void) {
         updateHandler = handler;
+    }
+
+    export function setInitialState(im: Image) {
+        
     }
 
     // buffers[bufferNum][col][row] corresponds to whether the cell at location (col,row)
@@ -231,6 +234,7 @@ namespace conways {
 
     //% block="create still life $toDisplay col $col row $row"
     //% group="Shapes"
+    //% inlineInputMode=inline
     export function createStillLife(toDisplay: StillLife,
         col: number,
         row: number,
@@ -293,6 +297,7 @@ namespace conways {
 
     //% block="create oscillator $toDisplay col $col row $row"
     //% group="Shapes"
+    //% inlineInputMode=inline
     export function createOscillator(toDisplay: Oscillator,
         col: number,
         row: number,
@@ -369,6 +374,7 @@ namespace conways {
 
     //% block="create motion $toDisplay col $col row $row"
     //% group="Shapes"
+    //% inlineInputMode=inline
     export function createMotion(toDisplay: Motion,
         col: number,
         row: number,
@@ -478,6 +484,7 @@ namespace conways {
 
     //% block="create odd cell $toDisplay col $col row $row"
     //% group="Shapes"
+    //% inlineInputMode=inline
     export function createOddCell(toDisplay: OddCell,
         col: number,
         row: number,
