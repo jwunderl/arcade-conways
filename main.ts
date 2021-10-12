@@ -73,11 +73,13 @@ namespace conways {
         Acorn
     }
 
-    const width = screen.width;
-    const height = screen.height;
+    let width: number;
+    let height: number;
+    let scale: number
     let updateHandler: (x: number, y: number) => void;
 
     //% block="on generation update $col $row"
+    //% blockId="conwaysOnGenerationUpdate"
     //% draggableParameters="reporter"
     //% group="Game of Life"
     //% weight=50
@@ -85,8 +87,27 @@ namespace conways {
         updateHandler = handler;
     }
 
+    //% block="set initial state $im"
+    //% blockId="conwaysSetInitialState"
+    //% group="Game of Life"
+    //% im.shadow=game_of_life_image_picker
+    //% weight=100
     export function setInitialState(im: Image) {
-        
+        scale = 2;
+        init(im, true);
+    }
+
+    //% blockId=game_of_life_image_picker block="%img"
+    //% shim=TD_ID
+    //% img.fieldEditor="sprite"
+    //% img.fieldOptions.taggedTemplate="img"
+    //% img.fieldOptions.decompileIndirectFixedInstances="true"
+    //% img.fieldOptions.sizes="80,60"
+    //% img.fieldOptions.filter="!dialog !background"
+    //% weight=100 group="Create"
+    //% blockHidden=1 duplicateShadowOnDrag
+    export function _lifeImage(img: Image) {
+        return img;
     }
 
     // buffers[bufferNum][col][row] corresponds to whether the cell at location (col,row)
@@ -94,9 +115,10 @@ namespace conways {
     let buffers: boolean[][][];
     let currentBuffer: number;
 
-    //% block
+    //% block="next generation"
+    //% blockId="conwaysNextGeneration"
     //% group="Game of Life"
-    //% weight=100
+    //% weight=90
     export function nextGeneration() {
         init();
         // leave 1 pixel of unused edge on each side
@@ -111,6 +133,7 @@ namespace conways {
     }
 
     //% block="is alive at $col $row"
+    //% blockId="conwaysGetState"
     //% group="Game of Life"
     //% weight=80
     export function getState(col: number, row: number) {
@@ -120,6 +143,7 @@ namespace conways {
     }
 
     //% block="is alive $direction of $col $row"
+    //% blockId="conwaysGetStateInDirection"
     //% group="Game of Life"
     //% weight=75
     export function getStateInDirection(direction: conways.Direction, col: number, row: number) {
@@ -147,6 +171,7 @@ namespace conways {
     }
 
     //% block="set alive at $col $row $alive"
+    //% blockId="conwaysSetState"
     //% group="Game of Life"
     //% weight=90
     export function setState(col: number, row: number, alive: boolean) {
@@ -203,38 +228,32 @@ namespace conways {
         }
     }
 
-    function init() {
-        if (buffers) return;
-        const bkgd = scene.backgroundImage();
+    function init(im?: Image, forced?: boolean) {
+        if (buffers && !forced) return;
+        const initState = im || scene.backgroundImage();
+        width = initState.width;
+        height = initState.height;
         buffers = [[], []];
         for (let x = 0; x < width; x++) {
             buffers[0][x] = [];
             buffers[1][x] = [];
-            for (let y = 0; y < height; y++) {
-                buffers[0][x][y] = bkgd.getPixel(x, y) != 0;
+        }
+
+        for (let x = 1; x < width - 1; x++) {
+            for (let y = 1; y < height - 1; y++) {
+                buffers[0][x][y] = initState.getPixel(x, y) != 0;
                 buffers[1][x][y] = false;
             }
         }
 
         currentBuffer = 0;
-        // Draw a border around screen, as those pixels are counted as 'not alive'
-        for (let x = 0; x < width; x++) {
-            buffers[0][x][0] = false;
-            buffers[0][x][height - 1] = false;
-            bkgd.setPixel(x, 0, 1);
-            bkgd.setPixel(x, height - 1, 1);
-        }
-        for (let y = 0; y < height; y++) {
-            buffers[0][0][y] = false;
-            buffers[0][width - 1][y] = false;
-            bkgd.setPixel(0, y, 1);
-            bkgd.setPixel(width - 1, y, 1);
-        }
     }
 
     //% block="create still life $toDisplay col $col row $row"
+    //% blockId="conwaysCreateStillLife"
     //% group="Shapes"
     //% inlineInputMode=inline
+    //% weight=80
     export function createStillLife(toDisplay: StillLife,
         col: number,
         row: number,
@@ -296,8 +315,10 @@ namespace conways {
     }
 
     //% block="create oscillator $toDisplay col $col row $row"
+    //% blockId="conwaysCreateOscillator"
     //% group="Shapes"
     //% inlineInputMode=inline
+    //% weight=60
     export function createOscillator(toDisplay: Oscillator,
         col: number,
         row: number,
@@ -373,8 +394,10 @@ namespace conways {
     }
 
     //% block="create motion $toDisplay col $col row $row"
+    //% blockId="conwaysCreateMotion"
     //% group="Shapes"
     //% inlineInputMode=inline
+    //% weight=40
     export function createMotion(toDisplay: Motion,
         col: number,
         row: number,
@@ -483,8 +506,10 @@ namespace conways {
     }
 
     //% block="create odd cell $toDisplay col $col row $row"
+    //% blockId="conwaysCreateOddCell"
     //% group="Shapes"
     //% inlineInputMode=inline
+    //% weight=20
     export function createOddCell(toDisplay: OddCell,
         col: number,
         row: number,
@@ -524,6 +549,10 @@ namespace conways {
         src.drawImage(display, col, row);
     }
 
+    //% block="create $count random cells"
+    //% blockId="conwaysCreateRandomCells"
+    //% group="Shapes"
+    //% weight=0
     export function createRandom(count: number) {
         for (let i = 0; i < count; ++i)
             setState(randint(0, width), randint(0, width), true);
