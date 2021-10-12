@@ -75,64 +75,78 @@ namespace conways {
 
     const width = screen.width;
     const height = screen.height;
+    let updateHandler: (x: number, y: number) => void;
 
-    // buffers[bufferNum][x][y] corresponds to whether the cell at location (x,y)
+
+    //% block="on generation update $col $row"
+    //% draggableParameters="reporter"
+    //% group="Game of Life"
+    //% weight=50
+    export function onGenerationUpdate(handler: (col: number, row: number) => void) {
+        updateHandler = handler;
+    }
+
+    // buffers[bufferNum][col][row] corresponds to whether the cell at location (col,row)
     // was alive in the given buffer
     let buffers: boolean[][][];
     let currentBuffer: number;
 
     //% block
     //% group="Game of Life"
+    //% weight=100
     export function nextGeneration() {
         init();
         // leave 1 pixel of unused edge on each side
         // to avoid having to deal with oob checking
-        for (let x = 1; x < width - 1; ++x) {
-            for (let y = 1; y < height - 1; ++y) {
-                applyRules(x, y);
+        for (let col = 1; col < width - 1; ++col) {
+            for (let row = 1; row < height - 1; ++row) {
+                (updateHandler || applyRules)(col, row);
             }
         }
         
         currentBuffer++;
     }
 
-    //% block="is alive at $x $y"
+    //% block="is alive at $col $row"
     //% group="Game of Life"
-    export function getState(x: number, y: number) {
+    //% weight=80
+    export function getState(col: number, row: number) {
         init();
         const lastGeneration = buffers[currentBuffer % 2];
-        return !!lastGeneration[x][y];
+        return !!lastGeneration[col][row];
     }
 
-    //% block="is alive $direction of $x $y"
+    //% block="is alive $direction of $col $row"
     //% group="Game of Life"
-    export function getStateInDirection(direction: conways.Direction, x: number, y: number) {
+    //% weight=75
+    export function getStateInDirection(direction: conways.Direction, col: number, row: number) {
         switch (direction) {
             case Direction.North:
-                return getState(x, y - 1);
+                return getState(col, row - 1);
             case Direction.NorthEast:
-                return getState(x + 1, y - 1);
+                return getState(col + 1, row - 1);
             case Direction.NorthWest:
-                return getState(x - 1, y - 1);
+                return getState(col - 1, row - 1);
             case Direction.South:
-                return getState(x, y + 1);
+                return getState(col, row + 1);
             case Direction.SouthEast:
-                return getState(x + 1, y + 1);
+                return getState(col + 1, row + 1);
             case Direction.SouthWest:
-                return getState(x - 1, y + 1);
+                return getState(col - 1, row + 1);
             case Direction.East:
-                return getState(x + 1, y);
+                return getState(col + 1, row);
             case Direction.West:
-                return getState(x - 1, y);
+                return getState(col - 1, row);
             // Should not hit, but if not direction go for center
             default:
-                return getState(x, y);
+                return getState(col, row);
         }
     }
 
-    //% block="set alive at $x $y $alive"
+    //% block="set alive at $col $row $alive"
     //% group="Game of Life"
-    export function setState(x: number, y: number, alive: boolean) {
+    //% weight=90
+    export function setState(col: number, row: number, alive: boolean) {
         init();
 
         const lastGeneration = buffers[currentBuffer % 2];
@@ -140,14 +154,14 @@ namespace conways {
         const bkgd = scene.backgroundImage();
 
         if (alive) {
-            currGeneration[x][y] = true;
-            if (!lastGeneration[x][y]) {
-                bkgd.setPixel(x, y, randint(1, 0xd));
+            currGeneration[col][row] = true;
+            if (!lastGeneration[col][row]) {
+                bkgd.setPixel(col, row, randint(1, 0xd));
             }
         } else {
-            currGeneration[x][y] = false;
-            if (lastGeneration[x][y]) {
-                bkgd.setPixel(x, y, 0);
+            currGeneration[col][row] = false;
+            if (lastGeneration[col][row]) {
+                bkgd.setPixel(col, row, 0);
             }
         }
     }
@@ -171,18 +185,18 @@ namespace conways {
         return count;
     }
 
-    function applyRules(x: number, y: number) {
+    export function applyRules(col: number, row: number) {
         const bkgd = scene.backgroundImage();
-        const neighbors = countNeighbors(x, y);
-        const state = getState(x, y);
-        if (getState(x, y) && (neighbors < 2 || neighbors > 3)) {
+        const neighbors = countNeighbors(col, row);
+        const state = getState(col, row);
+        if (getState(col, row) && (neighbors < 2 || neighbors > 3)) {
             // Previously alive cell has died due to under- or over-population
-            setState(x, y, false);
-        } else if (!getState(x, y) && neighbors == 3) {
+            setState(col, row, false);
+        } else if (!getState(col, row) && neighbors == 3) {
             // Previously empty location has new cell born
-            setState(x, y, true);
+            setState(col, row, true);
         } else {
-            setState(x, y, getState(x, y));
+            setState(col, row, getState(col, row));
         }
     }
 
@@ -215,11 +229,11 @@ namespace conways {
         }
     }
 
-    //% block="create still life $toDisplay x $x y $y"
+    //% block="create still life $toDisplay col $col row $row"
     //% group="Shapes"
     export function createStillLife(toDisplay: StillLife,
-        x: number,
-        y: number,
+        col: number,
+        row: number,
         src?: Image) {
         if (!src) src = scene.backgroundImage();
 
@@ -274,14 +288,14 @@ namespace conways {
             }
             default: return;
         }
-        src.drawImage(display, x, y);
+        src.drawImage(display, col, row);
     }
 
-    //% block="create oscillator $toDisplay x $x y $y"
+    //% block="create oscillator $toDisplay col $col row $row"
     //% group="Shapes"
     export function createOscillator(toDisplay: Oscillator,
-        x: number,
-        y: number,
+        col: number,
+        row: number,
         src?: Image) {
         if (!src) src = scene.backgroundImage();
 
@@ -350,14 +364,14 @@ namespace conways {
             }
             default: return;
         }
-        src.drawImage(display, x, y);
+        src.drawImage(display, col, row);
     }
 
-    //% block="create motion $toDisplay x $x y $y"
+    //% block="create motion $toDisplay col $col row $row"
     //% group="Shapes"
     export function createMotion(toDisplay: Motion,
-        x: number,
-        y: number,
+        col: number,
+        row: number,
         src?: Image) {
         if (!src) src = scene.backgroundImage();
 
@@ -459,14 +473,14 @@ namespace conways {
             default: return;
         }
 
-        src.drawImage(display, x, y);
+        src.drawImage(display, col, row);
     }
 
-    //% block="create odd cell $toDisplay x $x y $y"
+    //% block="create odd cell $toDisplay col $col row $row"
     //% group="Shapes"
     export function createOddCell(toDisplay: OddCell,
-        x: number,
-        y: number,
+        col: number,
+        row: number,
         src?: Image) {
         if (!src) src = scene.backgroundImage();
 
@@ -500,13 +514,11 @@ namespace conways {
             default: return;
         }
 
-        src.drawImage(display, x, y);
+        src.drawImage(display, col, row);
     }
 
-    export function createRandom(count: number, src?: Image) {
-        if (!src) src = scene.backgroundImage();
-
+    export function createRandom(count: number) {
         for (let i = 0; i < count; ++i)
-            src.setPixel(randint(0, width), randint(0, height), 1);
+            setState(randint(0, width), randint(0, width), true);
     }
 }
