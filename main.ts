@@ -265,14 +265,15 @@ namespace conways {
             buffers[1][x] = [];
         }
 
+        currentBuffer = 0;
+
         for (let x = 0; x < width; x++) {
             for (let y = 0; y < height; y++) {
                 buffers[0][x][y] = initState.getPixel(x, y) != 0;
                 buffers[1][x][y] = false;
+
             }
         }
-
-        currentBuffer = 0;
     }
 
     //% block="create still life $toDisplay col $col row $row"
@@ -282,9 +283,7 @@ namespace conways {
     //% weight=80
     export function createStillLife(toDisplay: StillLife,
         col: number,
-        row: number,
-        src?: Image) {
-        if (!src) src = scene.backgroundImage();
+        row: number) {
 
         let display: Image;
         switch (toDisplay) {
@@ -337,7 +336,7 @@ namespace conways {
             }
             default: return;
         }
-        src.drawImage(display, col, row);
+        initalizeShape(display, col, row);
     }
 
     //% block="create oscillator $toDisplay col $col row $row"
@@ -347,9 +346,7 @@ namespace conways {
     //% weight=60
     export function createOscillator(toDisplay: Oscillator,
         col: number,
-        row: number,
-        src?: Image) {
-        if (!src) src = scene.backgroundImage();
+        row: number) {
 
         let display: Image;
         switch (toDisplay) {
@@ -416,7 +413,7 @@ namespace conways {
             }
             default: return;
         }
-        src.drawImage(display, col, row);
+        initalizeShape(display, col, row);
     }
 
     //% block="create motion $toDisplay col $col row $row"
@@ -426,9 +423,7 @@ namespace conways {
     //% weight=40
     export function createMotion(toDisplay: Motion,
         col: number,
-        row: number,
-        src?: Image) {
-        if (!src) src = scene.backgroundImage();
+        row: number) {
 
         let display: Image;
         switch (toDisplay) {
@@ -528,7 +523,7 @@ namespace conways {
             default: return;
         }
 
-        src.drawImage(display, col, row);
+        initalizeShape(display, col, row);
     }
 
     //% block="create odd cell $toDisplay col $col row $row"
@@ -538,9 +533,7 @@ namespace conways {
     //% weight=20
     export function createOddCell(toDisplay: OddCell,
         col: number,
-        row: number,
-        src?: Image) {
-        if (!src) src = scene.backgroundImage();
+        row: number) {
 
         let display: Image;
         switch (toDisplay) {
@@ -572,7 +565,16 @@ namespace conways {
             default: return;
         }
 
-        src.drawImage(display, col, row);
+        initalizeShape(display, col, row);
+    }
+
+    function initalizeShape(im: Image, col: number, row: number) {
+        init();
+        for (let x = 0; x < im.width; x++) {
+            for (let y = 0; y < im.height; y++) {
+                buffers[currentBuffer][col + x][row + y] = im.getPixel(x, y) != 0;
+            }
+        }
     }
 
     //% block="create $count random cells"
@@ -581,6 +583,6 @@ namespace conways {
     //% weight=0
     export function createRandom(count: number) {
         for (let i = 0; i < count; ++i)
-            setState(randint(0, width), randint(0, width), true);
+            buffers[currentBuffer][randint(0, width - 1)][randint(0, width - 1)] = true;
     }
 }
