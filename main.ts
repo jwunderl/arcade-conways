@@ -92,7 +92,6 @@ namespace conways {
     //% im.shadow=game_of_life_image_picker
     //% weight=100
     export function setInitialState(im: Image) {
-        scale = 2;
         init(im, true);
     }
 
@@ -198,12 +197,24 @@ namespace conways {
         if (alive) {
             currGeneration[col][row] = true;
             if (!lastGeneration[col][row]) {
-                bkgd.setPixel(col, row, randint(1, 0xd));
+                bkgd.fillRect(
+                    col * scale,
+                    row * scale,
+                    scale,
+                    scale,
+                    randint(1, 0xd)
+                );
             }
         } else {
             currGeneration[col][row] = false;
             if (lastGeneration[col][row]) {
-                bkgd.setPixel(col, row, 0);
+                bkgd.fillRect(
+                    col * scale,
+                    row * scale,
+                    scale,
+                    scale,
+                    0
+                );
             }
         }
     }
@@ -248,6 +259,7 @@ namespace conways {
         width = initState.width;
         height = initState.height;
         buffers = [[], []];
+        scale = Math.max(1, Math.floor(Math.min(160 / width, 120 / height)));
         for (let x = 0; x < width; x++) {
             buffers[0][x] = [];
             buffers[1][x] = [];
