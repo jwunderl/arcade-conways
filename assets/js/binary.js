@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.6.24/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.1","target":"arcade","targetVersion":"1.6.24","repo":"jwunderl/arcade-conways"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.6.24/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.2","target":"arcade","targetVersion":"1.6.24","repo":"jwunderl/arcade-conways"}
 // total=1179586 new=8.43% cached=86.11% other=5.46%
 (function (ectx) {
 'use strict';
@@ -387,7 +387,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P105141(s) {
+function _main___P111600(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -747,13 +747,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P105141.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
-_main___P105141.continuations = [  ]
+_main___P111600.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
+_main___P111600.continuations = [  ]
 
-function _main___P105141_mk(s) {
+function _main___P111600_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P105141, depth: s.depth + 1,
+        parent: s, fn: _main___P111600, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1052,7 +1052,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tmp_0 = conways_nextGeneration__P104265_mk(s);
+    s.tmp_0 = conways_nextGeneration__P110781_mk(s);
     s.callLocIdx = 51; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
@@ -1074,7 +1074,7 @@ function inline__P78910_mk(s) {
 
 
 
-function conways_nextGeneration__P104265(s) {
+function conways_nextGeneration__P110781(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1084,78 +1084,78 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.col___104286 = undefined;
-    s.row___104291 = undefined;
-    s.tmp_0 = conways_init__P104276_mk(s);
+    s.col___110802 = undefined;
+    s.row___110807 = undefined;
+    s.tmp_0 = conways_init__P110792_mk(s);
     s.tmp_0.arg0 = undefined;
     s.tmp_0.arg1 = undefined;
     s.callLocIdx = 53; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    s.col___104286 = (0);
+    s.col___110802 = (0);
   case 1:
-    r0 = (s.col___104286 < globals.width___104266);
+    r0 = (s.col___110802 < globals.width___110782);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
-    s.row___104291 = (0);
+    s.row___110807 = (0);
   case 2:
-    r0 = (s.row___104291 < globals.height___104267);
+    r0 = (s.row___110807 < globals.height___110783);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    s.tmp_1 = r0 = globals.updateHandler___104269;
+    s.tmp_1 = r0 = globals.updateHandler___110785;
     r0 = pxsim_numops_toBool(s.tmp_1);
     if (!r0) { step = 3; continue; }
     r0 = s.tmp_1;
     { step = 4; continue; }
   case 3:
-    r0 = conways_applyRules__P104300;
+    r0 = conways_applyRules__P110816;
   case 4:
     // jmp value (already in r0)
     s.tmp_2 = r0;
     s.tmp_3 = lambda_3_mk(s);
     s.tmp_3.argL = s.tmp_2;
-    s.tmp_3.arg0 = s.col___104286;
-    s.tmp_3.arg1 = s.row___104291;
+    s.tmp_3.arg0 = s.col___110802;
+    s.tmp_3.arg1 = s.row___110807;
     setupLambda(s.tmp_3, s.tmp_3.argL);
     s.callLocIdx = 54; s.pc = 8; return s.tmp_3;
   case 8:
     r0 = s.retval;
-    r0 = (s.row___104291 + 1);
-    s.row___104291 = (r0);
+    r0 = (s.row___110807 + 1);
+    s.row___110807 = (r0);
     { step = 2; continue; }
   case 5:
-    r0 = (s.col___104286 + 1);
-    s.col___104286 = (r0);
+    r0 = (s.col___110802 + 1);
+    s.col___110802 = (r0);
     { step = 1; continue; }
   case 6:
-    r0 = (globals.currentBuffer___104282 + 1);
-    globals.currentBuffer___104282 = (r0);
+    r0 = (globals.currentBuffer___110798 + 1);
+    globals.currentBuffer___110798 = (r0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-conways_nextGeneration__P104265.info = {"start":3008,"length":379,"line":119,"column":4,"endLine":131,"endColumn":5,"fileName":"main.ts","functionName":"nextGeneration","argumentNames":[]}
+conways_nextGeneration__P110781.info = {"start":3014,"length":379,"line":119,"column":4,"endLine":131,"endColumn":5,"fileName":"main.ts","functionName":"nextGeneration","argumentNames":[]}
 
-function conways_nextGeneration__P104265_mk(s) {
+function conways_nextGeneration__P110781_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_nextGeneration__P104265, depth: s.depth + 1,
+        parent: s, fn: conways_nextGeneration__P110781, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  col___104286: undefined,
-  row___104291: undefined,
+  col___110802: undefined,
+  row___110807: undefined,
 } }
 
 
 
 
 
-function conways_applyRules__P104300(s) {
+function conways_applyRules__P110816(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1165,9 +1165,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.bkgd___104565 = undefined;
-    s.neighbors___104568 = undefined;
-    s.state___104573 = undefined;
+    s.bkgd___111081 = undefined;
+    s.neighbors___111084 = undefined;
+    s.state___111089 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -1177,22 +1177,22 @@ switch (step) {
     s.callLocIdx = 68; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.bkgd___104565 = (r0);
-    s.tmp_0 = conways_countNeighbors__P104491_mk(s);
+    s.bkgd___111081 = (r0);
+    s.tmp_0 = conways_countNeighbors__P111007_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
     s.callLocIdx = 69; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    s.neighbors___104568 = (r0);
-    s.tmp_0 = conways_getState__P104311_mk(s);
+    s.neighbors___111084 = (r0);
+    s.tmp_0 = conways_getState__P110827_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
     s.callLocIdx = 70; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
-    s.state___104573 = (r0);
-    s.tmp_1 = conways_getState__P104311_mk(s);
+    s.state___111089 = (r0);
+    s.tmp_1 = conways_getState__P110827_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = s.arg1;
     s.callLocIdx = 71; s.pc = 14; return s.tmp_1;
@@ -1204,14 +1204,14 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 4; continue; }
   case 1:
-    r0 = (s.neighbors___104568 < 2);
+    r0 = (s.neighbors___111084 < 2);
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBool(s.tmp_2);
     if (!r0) { step = 2; continue; }
     r0 = s.tmp_2;
     { step = 3; continue; }
   case 2:
-    r0 = (s.neighbors___104568 > 3);
+    r0 = (s.neighbors___111084 > 3);
   case 3:
     // jmp value (already in r0)
     s.tmp_3 = r0;
@@ -1221,7 +1221,7 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 5; continue; }
-    s.tmp_5 = conways_setState__P104412_mk(s);
+    s.tmp_5 = conways_setState__P110928_mk(s);
     s.tmp_5.arg0 = s.arg0;
     s.tmp_5.arg1 = s.arg1;
     s.tmp_5.arg2 = false;
@@ -1230,7 +1230,7 @@ switch (step) {
     r0 = s.retval;
     { step = 10; continue; }
   case 5:
-    s.tmp_3 = conways_getState__P104311_mk(s);
+    s.tmp_3 = conways_getState__P110827_mk(s);
     s.tmp_3.arg0 = s.arg0;
     s.tmp_3.arg1 = s.arg1;
     s.callLocIdx = 73; s.pc = 16; return s.tmp_3;
@@ -1246,13 +1246,13 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 7; continue; }
   case 6:
-    r0 = (s.neighbors___104568 == 3);
+    r0 = (s.neighbors___111084 == 3);
   case 7:
     // jmp value (already in r0)
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 8; continue; }
-    s.tmp_5 = conways_setState__P104412_mk(s);
+    s.tmp_5 = conways_setState__P110928_mk(s);
     s.tmp_5.arg0 = s.arg0;
     s.tmp_5.arg1 = s.arg1;
     s.tmp_5.arg2 = true;
@@ -1261,10 +1261,10 @@ switch (step) {
     r0 = s.retval;
     { step = 9; continue; }
   case 8:
-    s.tmp_0 = conways_setState__P104412_mk(s);
+    s.tmp_0 = conways_setState__P110928_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.tmp_1 = conways_getState__P104311_mk(s);
+    s.tmp_1 = conways_getState__P110827_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = s.arg1;
     s.callLocIdx = 75; s.pc = 19; return s.tmp_1;
@@ -1280,12 +1280,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-conways_applyRules__P104300.info = {"start":6911,"length":624,"line":240,"column":4,"endLine":253,"endColumn":5,"fileName":"main.ts","functionName":"applyRules","argumentNames":["col","row"]}
+conways_applyRules__P110816.info = {"start":6941,"length":624,"line":240,"column":4,"endLine":253,"endColumn":5,"fileName":"main.ts","functionName":"applyRules","argumentNames":["col","row"]}
 
-function conways_applyRules__P104300_mk(s) {
+function conways_applyRules__P110816_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_applyRules__P104300, depth: s.depth + 1,
+        parent: s, fn: conways_applyRules__P110816, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1293,9 +1293,9 @@ function conways_applyRules__P104300_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  bkgd___104565: undefined,
-  neighbors___104568: undefined,
-  state___104573: undefined,
+  bkgd___111081: undefined,
+  neighbors___111084: undefined,
+  state___111089: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -1304,7 +1304,7 @@ function conways_applyRules__P104300_mk(s) {
 
 
 
-function conways_setState__P104412(s) {
+function conways_setState__P110928(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1314,16 +1314,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.lastGeneration___104432 = undefined;
-    s.currGeneration___104437 = undefined;
-    s.bkgd___104445 = undefined;
+    s.lastGeneration___110948 = undefined;
+    s.currGeneration___110953 = undefined;
+    s.bkgd___110961 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.arg2 = (s.lambdaArgs[2]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = conways_init__P104276_mk(s);
+    s.tmp_0 = conways_init__P110792_mk(s);
     s.tmp_0.arg0 = undefined;
     s.tmp_0.arg1 = undefined;
     s.callLocIdx = 56; s.pc = 16; return s.tmp_0;
@@ -1336,7 +1336,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = (s.arg0 >= globals.width___104266);
+    r0 = (s.arg0 >= globals.width___110782);
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -1354,7 +1354,7 @@ switch (step) {
     r0 = s.tmp_2;
     { step = 6; continue; }
   case 5:
-    r0 = (s.arg1 >= globals.height___104267);
+    r0 = (s.arg1 >= globals.height___110783);
   case 6:
     // jmp value (already in r0)
     s.tmp_3 = r0;
@@ -1363,29 +1363,29 @@ switch (step) {
     { step = 15; continue; }
   case 7:
   case 8:
-    s.tmp_4 = r0 = globals.buffers___104281;
-    r0 = (globals.currentBuffer___104282 % 2);
+    s.tmp_4 = r0 = globals.buffers___110797;
+    r0 = (globals.currentBuffer___110798 % 2);
     s.tmp_5 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, s.tmp_5);
-    s.lastGeneration___104432 = (r0);
-    s.tmp_0 = r0 = globals.buffers___104281;
-    r0 = (globals.currentBuffer___104282 + 1);
+    s.lastGeneration___110948 = (r0);
+    s.tmp_0 = r0 = globals.buffers___110797;
+    r0 = (globals.currentBuffer___110798 + 1);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 % 2);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.currGeneration___104437 = (r0);
+    s.currGeneration___110953 = (r0);
     s.tmp_0 = scene_backgroundImage__P2533_mk(s);
     s.callLocIdx = 57; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
-    s.bkgd___104445 = (r0);
+    s.bkgd___110961 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.arg2);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.currGeneration___104437, s.arg0);
+    r0 = pxsim_Array__getAt(s.currGeneration___110953, s.arg0);
     s.tmp_0 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_0, s.arg1, true);
-    r0 = pxsim_Array__getAt(s.lastGeneration___104432, s.arg0);
+    r0 = pxsim_Array__getAt(s.lastGeneration___110948, s.arg0);
     s.tmp_3 = r0;
     r0 = pxsim_Array__getAt(s.tmp_3, s.arg1);
     s.tmp_2 = r0;
@@ -1396,13 +1396,13 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_4 = helpers_imageFillRect__P1751_mk(s);
-    s.tmp_4.arg0 = s.bkgd___104445;
-    r0 = (s.arg0 * globals.scale___104268);
+    s.tmp_4.arg0 = s.bkgd___110961;
+    r0 = (s.arg0 * globals.scale___110784);
     s.tmp_4.arg1 = r0;
-    r0 = (s.arg1 * globals.scale___104268);
+    r0 = (s.arg1 * globals.scale___110784);
     s.tmp_4.arg2 = r0;
-    s.tmp_4.arg3 = globals.scale___104268;
-    s.tmp_4.arg4 = globals.scale___104268;
+    s.tmp_4.arg3 = globals.scale___110784;
+    s.tmp_4.arg4 = globals.scale___110784;
     r0 = pxsim.Math_.randomRange(1, 13);
     s.tmp_4.arg5 = r0;
     s.callLocIdx = 58; s.pc = 18; return s.tmp_4;
@@ -1412,23 +1412,23 @@ switch (step) {
   case 10:
     { step = 14; continue; }
   case 11:
-    r0 = pxsim_Array__getAt(s.currGeneration___104437, s.arg0);
+    r0 = pxsim_Array__getAt(s.currGeneration___110953, s.arg0);
     s.tmp_0 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_0, s.arg1, false);
-    r0 = pxsim_Array__getAt(s.lastGeneration___104432, s.arg0);
+    r0 = pxsim_Array__getAt(s.lastGeneration___110948, s.arg0);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_1, s.arg1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
     s.tmp_2 = helpers_imageFillRect__P1751_mk(s);
-    s.tmp_2.arg0 = s.bkgd___104445;
-    r0 = (s.arg0 * globals.scale___104268);
+    s.tmp_2.arg0 = s.bkgd___110961;
+    r0 = (s.arg0 * globals.scale___110784);
     s.tmp_2.arg1 = r0;
-    r0 = (s.arg1 * globals.scale___104268);
+    r0 = (s.arg1 * globals.scale___110784);
     s.tmp_2.arg2 = r0;
-    s.tmp_2.arg3 = globals.scale___104268;
-    s.tmp_2.arg4 = globals.scale___104268;
+    s.tmp_2.arg3 = globals.scale___110784;
+    s.tmp_2.arg4 = globals.scale___110784;
     s.tmp_2.arg5 = 0;
     s.callLocIdx = 59; s.pc = 19; return s.tmp_2;
   case 19:
@@ -1441,12 +1441,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-conways_setState__P104412.info = {"start":5278,"length":1001,"line":187,"column":4,"endLine":219,"endColumn":5,"fileName":"main.ts","functionName":"setState","argumentNames":["col","row","alive"]}
+conways_setState__P110928.info = {"start":5308,"length":1001,"line":187,"column":4,"endLine":219,"endColumn":5,"fileName":"main.ts","functionName":"setState","argumentNames":["col","row","alive"]}
 
-function conways_setState__P104412_mk(s) {
+function conways_setState__P110928_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_setState__P104412, depth: s.depth + 1,
+        parent: s, fn: conways_setState__P110928, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1454,9 +1454,9 @@ function conways_setState__P104412_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  lastGeneration___104432: undefined,
-  currGeneration___104437: undefined,
-  bkgd___104445: undefined,
+  lastGeneration___110948: undefined,
+  currGeneration___110953: undefined,
+  bkgd___110961: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -1728,7 +1728,7 @@ function Math_max__P130_mk(s) {
 
 
 
-function conways_getState__P104311(s) {
+function conways_getState__P110827(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1738,13 +1738,13 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.lastGeneration___104330 = undefined;
+    s.lastGeneration___110846 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = conways_init__P104276_mk(s);
+    s.tmp_0 = conways_init__P110792_mk(s);
     s.tmp_0.arg0 = undefined;
     s.tmp_0.arg1 = undefined;
     s.callLocIdx = 55; s.pc = 10; return s.tmp_0;
@@ -1757,7 +1757,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = (s.arg0 >= globals.width___104266);
+    r0 = (s.arg0 >= globals.width___110782);
   case 2:
     // jmp value (already in r0)
     s.tmp_1 = r0;
@@ -1775,7 +1775,7 @@ switch (step) {
     r0 = s.tmp_2;
     { step = 6; continue; }
   case 5:
-    r0 = (s.arg1 >= globals.height___104267);
+    r0 = (s.arg1 >= globals.height___110783);
   case 6:
     // jmp value (already in r0)
     s.tmp_3 = r0;
@@ -1785,12 +1785,12 @@ switch (step) {
     { step = 9; continue; }
   case 7:
   case 8:
-    s.tmp_4 = r0 = globals.buffers___104281;
-    r0 = (globals.currentBuffer___104282 % 2);
+    s.tmp_4 = r0 = globals.buffers___110797;
+    r0 = (globals.currentBuffer___110798 % 2);
     s.tmp_5 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, s.tmp_5);
-    s.lastGeneration___104330 = (r0);
-    r0 = pxsim_Array__getAt(s.lastGeneration___104330, s.arg0);
+    s.lastGeneration___110846 = (r0);
+    r0 = pxsim_Array__getAt(s.lastGeneration___110846, s.arg0);
     s.tmp_4 = r0;
     r0 = pxsim_Array__getAt(s.tmp_4, s.arg1);
     s.tmp_3 = r0;
@@ -1805,12 +1805,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-conways_getState__P104311.info = {"start":3512,"length":267,"line":137,"column":4,"endLine":143,"endColumn":5,"fileName":"main.ts","functionName":"getState","argumentNames":["col","row"]}
+conways_getState__P110827.info = {"start":3526,"length":267,"line":137,"column":4,"endLine":143,"endColumn":5,"fileName":"main.ts","functionName":"getState","argumentNames":["col","row"]}
 
-function conways_getState__P104311_mk(s) {
+function conways_getState__P110827_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_getState__P104311, depth: s.depth + 1,
+        parent: s, fn: conways_getState__P110827, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1818,7 +1818,7 @@ function conways_getState__P104311_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  lastGeneration___104330: undefined,
+  lastGeneration___110846: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -1827,7 +1827,7 @@ function conways_getState__P104311_mk(s) {
 
 
 
-function conways_countNeighbors__P104491(s) {
+function conways_countNeighbors__P111007(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1837,46 +1837,46 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.lastGeneration___104494 = undefined;
-    s.lX___104499 = undefined;
-    s.rX___104502 = undefined;
-    s.lY___104506 = undefined;
-    s.rY___104509 = undefined;
-    s.count___104513 = undefined;
+    s.lastGeneration___111010 = undefined;
+    s.lX___111015 = undefined;
+    s.rX___111018 = undefined;
+    s.lY___111022 = undefined;
+    s.rY___111025 = undefined;
+    s.count___111029 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = r0 = globals.buffers___104281;
-    r0 = (globals.currentBuffer___104282 % 2);
+    s.tmp_0 = r0 = globals.buffers___110797;
+    r0 = (globals.currentBuffer___110798 % 2);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.lastGeneration___104494 = (r0);
+    s.lastGeneration___111010 = (r0);
     r0 = (s.arg0 - 1);
-    s.lX___104499 = (r0);
+    s.lX___111015 = (r0);
     r0 = (s.arg0 + 1);
-    s.rX___104502 = (r0);
+    s.rX___111018 = (r0);
     r0 = (s.arg1 - 1);
-    s.lY___104506 = (r0);
+    s.lY___111022 = (r0);
     r0 = (s.arg1 + 1);
-    s.rY___104509 = (r0);
-    s.count___104513 = (0);
-    s.tmp_1 = conways_getState__P104311_mk(s);
-    s.tmp_1.arg0 = s.lX___104499;
-    s.tmp_1.arg1 = s.lY___104506;
+    s.rY___111025 = (r0);
+    s.count___111029 = (0);
+    s.tmp_1 = conways_getState__P110827_mk(s);
+    s.tmp_1.arg0 = s.lX___111015;
+    s.tmp_1.arg1 = s.lY___111022;
     s.callLocIdx = 60; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 1:
   case 2:
-    s.tmp_1 = conways_getState__P104311_mk(s);
-    s.tmp_1.arg0 = s.lX___104499;
+    s.tmp_1 = conways_getState__P110827_mk(s);
+    s.tmp_1.arg0 = s.lX___111015;
     s.tmp_1.arg1 = s.arg1;
     s.callLocIdx = 61; s.pc = 18; return s.tmp_1;
   case 18:
@@ -1884,64 +1884,64 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 3:
   case 4:
-    s.tmp_1 = conways_getState__P104311_mk(s);
-    s.tmp_1.arg0 = s.lX___104499;
-    s.tmp_1.arg1 = s.rY___104509;
+    s.tmp_1 = conways_getState__P110827_mk(s);
+    s.tmp_1.arg0 = s.lX___111015;
+    s.tmp_1.arg1 = s.rY___111025;
     s.callLocIdx = 62; s.pc = 19; return s.tmp_1;
   case 19:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 5:
   case 6:
-    s.tmp_1 = conways_getState__P104311_mk(s);
+    s.tmp_1 = conways_getState__P110827_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.lY___104506;
+    s.tmp_1.arg1 = s.lY___111022;
     s.callLocIdx = 63; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 7:
   case 8:
-    s.tmp_1 = conways_getState__P104311_mk(s);
+    s.tmp_1 = conways_getState__P110827_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.tmp_1.arg1 = s.rY___104509;
+    s.tmp_1.arg1 = s.rY___111025;
     s.callLocIdx = 64; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 9:
   case 10:
-    s.tmp_1 = conways_getState__P104311_mk(s);
-    s.tmp_1.arg0 = s.rX___104502;
-    s.tmp_1.arg1 = s.lY___104506;
+    s.tmp_1 = conways_getState__P110827_mk(s);
+    s.tmp_1.arg0 = s.rX___111018;
+    s.tmp_1.arg1 = s.lY___111022;
     s.callLocIdx = 65; s.pc = 22; return s.tmp_1;
   case 22:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 11:
   case 12:
-    s.tmp_1 = conways_getState__P104311_mk(s);
-    s.tmp_1.arg0 = s.rX___104502;
+    s.tmp_1 = conways_getState__P110827_mk(s);
+    s.tmp_1.arg0 = s.rX___111018;
     s.tmp_1.arg1 = s.arg1;
     s.callLocIdx = 66; s.pc = 23; return s.tmp_1;
   case 23:
@@ -1949,42 +1949,42 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 13:
   case 14:
-    s.tmp_1 = conways_getState__P104311_mk(s);
-    s.tmp_1.arg0 = s.rX___104502;
-    s.tmp_1.arg1 = s.rY___104509;
+    s.tmp_1 = conways_getState__P110827_mk(s);
+    s.tmp_1.arg0 = s.rX___111018;
+    s.tmp_1.arg1 = s.rY___111025;
     s.callLocIdx = 67; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 15; continue; }
-    r0 = (s.count___104513 + 1);
-    s.count___104513 = (r0);
+    r0 = (s.count___111029 + 1);
+    s.count___111029 = (r0);
   case 15:
   case 16:
-    r0 = s.count___104513;
+    r0 = s.count___111029;
     return leave(s, r0)
   default: oops()
 } } }
-conways_countNeighbors__P104491.info = {"start":6285,"length":620,"line":221,"column":4,"endLine":238,"endColumn":5,"fileName":"main.ts","functionName":"countNeighbors","argumentNames":["x","y"]}
+conways_countNeighbors__P111007.info = {"start":6315,"length":620,"line":221,"column":4,"endLine":238,"endColumn":5,"fileName":"main.ts","functionName":"countNeighbors","argumentNames":["x","y"]}
 
-function conways_countNeighbors__P104491_mk(s) {
+function conways_countNeighbors__P111007_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_countNeighbors__P104491, depth: s.depth + 1,
+        parent: s, fn: conways_countNeighbors__P111007, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
-  lastGeneration___104494: undefined,
-  lX___104499: undefined,
-  rX___104502: undefined,
-  lY___104506: undefined,
-  rY___104509: undefined,
-  count___104513: undefined,
+  lastGeneration___111010: undefined,
+  lX___111015: undefined,
+  rX___111018: undefined,
+  lY___111022: undefined,
+  rY___111025: undefined,
+  count___111029: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -2093,7 +2093,7 @@ function scene_Background_image__P2350_mk(s) {
 
 
 
-function conways_init__P104276(s) {
+function conways_init__P110792(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2103,17 +2103,17 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.initState___104614 = undefined;
-    s.x___104639 = undefined;
-    s.bkgd___104656 = undefined;
-    s.x___104660 = undefined;
-    s.y___104665 = undefined;
+    s.initState___111130 = undefined;
+    s.x___111155 = undefined;
+    s.bkgd___111172 = undefined;
+    s.x___111176 = undefined;
+    s.y___111181 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = r0 = globals.buffers___104281;
+    s.tmp_0 = r0 = globals.buffers___110797;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 1; continue; }
     r0 = s.tmp_0;
@@ -2143,11 +2143,11 @@ switch (step) {
   case 6:
     // jmp value (already in r0)
     s.tmp_5 = r0;
-    s.initState___104614 = (s.tmp_5);
-    r0 = pxsim_ImageMethods.width(s.initState___104614);
-    globals.width___104266 = (r0);
-    r0 = pxsim_ImageMethods.height(s.initState___104614);
-    globals.height___104267 = (r0);
+    s.initState___111130 = (s.tmp_5);
+    r0 = pxsim_ImageMethods.width(s.initState___111130);
+    globals.width___110782 = (r0);
+    r0 = pxsim_ImageMethods.height(s.initState___111130);
+    globals.height___110783 = (r0);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     r0 = pxsim_Array__mk();
@@ -2156,13 +2156,13 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    globals.buffers___104281 = (s.tmp_0);
+    globals.buffers___110797 = (s.tmp_0);
     s.tmp_0 = Math_max__P130_mk(s);
     s.tmp_0.arg0 = 1;
     s.tmp_2 = Math_min__P131_mk(s);
-    r0 = (160 / globals.width___104266);
+    r0 = (160 / globals.width___110782);
     s.tmp_2.arg0 = r0;
-    r0 = (120 / globals.height___104267);
+    r0 = (120 / globals.height___110783);
     s.tmp_2.arg1 = r0;
     s.callLocIdx = 78; s.pc = 16; return s.tmp_2;
   case 16:
@@ -2173,69 +2173,69 @@ switch (step) {
     s.callLocIdx = 79; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    globals.scale___104268 = (r0);
-    s.x___104639 = (0);
+    globals.scale___110784 = (r0);
+    s.x___111155 = (0);
   case 7:
-    r0 = (s.x___104639 < globals.width___104266);
+    r0 = (s.x___111155 < globals.width___110782);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(globals.buffers___104281, 0);
+    r0 = pxsim_Array__getAt(globals.buffers___110797, 0);
     s.tmp_1 = r0;
-    s.tmp_2 = r0 = s.x___104639;
+    s.tmp_2 = r0 = s.x___111155;
     r0 = pxsim_Array__mk();
     s.tmp_3 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_1, s.tmp_2, s.tmp_3);
-    r0 = pxsim_Array__getAt(globals.buffers___104281, 1);
+    r0 = pxsim_Array__getAt(globals.buffers___110797, 1);
     s.tmp_0 = r0;
-    s.tmp_1 = r0 = s.x___104639;
+    s.tmp_1 = r0 = s.x___111155;
     r0 = pxsim_Array__mk();
     s.tmp_2 = r0;
     r0 = pxsim_Array_.setAt(s.tmp_0, s.tmp_1, s.tmp_2);
-    r0 = (s.x___104639 + 1);
-    s.x___104639 = (r0);
+    r0 = (s.x___111155 + 1);
+    s.x___111155 = (r0);
     { step = 7; continue; }
   case 8:
     s.tmp_0 = scene_backgroundImage__P2533_mk(s);
     s.callLocIdx = 80; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
-    s.bkgd___104656 = (r0);
-    globals.currentBuffer___104282 = (0);
-    s.x___104660 = (0);
+    s.bkgd___111172 = (r0);
+    globals.currentBuffer___110798 = (0);
+    s.x___111176 = (0);
   case 9:
-    r0 = (s.x___104660 < globals.width___104266);
+    r0 = (s.x___111176 < globals.width___110782);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
-    s.y___104665 = (0);
+    s.y___111181 = (0);
   case 10:
-    r0 = (s.y___104665 < globals.height___104267);
+    r0 = (s.y___111181 < globals.height___110783);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
-    s.tmp_1 = conways_setInBuffer__P104671_mk(s);
-    s.tmp_1.arg0 = s.bkgd___104656;
-    s.tmp_1.arg1 = s.x___104660;
-    s.tmp_1.arg2 = s.y___104665;
-    r0 = pxsim_ImageMethods.getPixel(s.initState___104614, s.x___104660, s.y___104665);
+    s.tmp_1 = conways_setInBuffer__P111187_mk(s);
+    s.tmp_1.arg0 = s.bkgd___111172;
+    s.tmp_1.arg1 = s.x___111176;
+    s.tmp_1.arg2 = s.y___111181;
+    r0 = pxsim_ImageMethods.getPixel(s.initState___111130, s.x___111176, s.y___111181);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 != 0);
     s.tmp_1.arg3 = r0;
     s.callLocIdx = 81; s.pc = 18; return s.tmp_1;
   case 18:
     r0 = s.retval;
-    r0 = pxsim_Array__getAt(globals.buffers___104281, 1);
+    r0 = pxsim_Array__getAt(globals.buffers___110797, 1);
     s.tmp_1 = r0;
-    r0 = pxsim_Array__getAt(s.tmp_1, s.x___104660);
+    r0 = pxsim_Array__getAt(s.tmp_1, s.x___111176);
     s.tmp_0 = r0;
-    r0 = pxsim_Array_.setAt(s.tmp_0, s.y___104665, false);
-    r0 = (s.y___104665 + 1);
-    s.y___104665 = (r0);
+    r0 = pxsim_Array_.setAt(s.tmp_0, s.y___111181, false);
+    r0 = (s.y___111181 + 1);
+    s.y___111181 = (r0);
     { step = 10; continue; }
   case 11:
-    r0 = (s.x___104660 + 1);
-    s.x___104660 = (r0);
+    r0 = (s.x___111176 + 1);
+    s.x___111176 = (r0);
     { step = 9; continue; }
   case 12:
   case 13:
@@ -2243,12 +2243,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-conways_init__P104276.info = {"start":7541,"length":740,"line":255,"column":4,"endLine":276,"endColumn":5,"fileName":"main.ts","functionName":"init","argumentNames":["im","forced"]}
+conways_init__P110792.info = {"start":7571,"length":740,"line":255,"column":4,"endLine":276,"endColumn":5,"fileName":"main.ts","functionName":"init","argumentNames":["im","forced"]}
 
-function conways_init__P104276_mk(s) {
+function conways_init__P110792_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_init__P104276, depth: s.depth + 1,
+        parent: s, fn: conways_init__P110792, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2256,11 +2256,11 @@ function conways_init__P104276_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   tmp_5: undefined,
-  initState___104614: undefined,
-  x___104639: undefined,
-  bkgd___104656: undefined,
-  x___104660: undefined,
-  y___104665: undefined,
+  initState___111130: undefined,
+  x___111155: undefined,
+  bkgd___111172: undefined,
+  x___111176: undefined,
+  y___111181: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -2269,7 +2269,7 @@ function conways_init__P104276_mk(s) {
 
 
 
-function conways_setInBuffer__P104671(s) {
+function conways_setInBuffer__P111187(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2286,7 +2286,7 @@ switch (step) {
       s.arg3 = (s.lambdaArgs[3]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_Array__getAt(globals.buffers___104281, globals.currentBuffer___104282);
+    r0 = pxsim_Array__getAt(globals.buffers___110797, globals.currentBuffer___110798);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_1, s.arg1);
     s.tmp_0 = r0;
@@ -2302,12 +2302,12 @@ switch (step) {
     s.tmp_0 = r0;
     s.tmp_1 = helpers_imageFillRect__P1751_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    r0 = (s.arg1 * globals.scale___104268);
+    r0 = (s.arg1 * globals.scale___110784);
     s.tmp_1.arg1 = r0;
-    r0 = (s.arg2 * globals.scale___104268);
+    r0 = (s.arg2 * globals.scale___110784);
     s.tmp_1.arg2 = r0;
-    s.tmp_1.arg3 = globals.scale___104268;
-    s.tmp_1.arg4 = globals.scale___104268;
+    s.tmp_1.arg3 = globals.scale___110784;
+    s.tmp_1.arg4 = globals.scale___110784;
     s.tmp_1.arg5 = s.tmp_0;
     s.callLocIdx = 86; s.pc = 3; return s.tmp_1;
   case 3:
@@ -2316,12 +2316,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-conways_setInBuffer__P104671.info = {"start":18763,"length":297,"line":580,"column":4,"endLine":590,"endColumn":5,"fileName":"main.ts","functionName":"setInBuffer","argumentNames":["bkgd","col","row","alive"]}
+conways_setInBuffer__P111187.info = {"start":18793,"length":297,"line":580,"column":4,"endLine":590,"endColumn":5,"fileName":"main.ts","functionName":"setInBuffer","argumentNames":["bkgd","col","row","alive"]}
 
-function conways_setInBuffer__P104671_mk(s) {
+function conways_setInBuffer__P111187_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_setInBuffer__P104671, depth: s.depth + 1,
+        parent: s, fn: conways_setInBuffer__P111187, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -3931,7 +3931,7 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
-    s.tmp_1 = conways_createMotion__P104261_mk(s);
+    s.tmp_1 = conways_createMotion__P110777_mk(s);
     s.tmp_1.arg0 = 2;
     s.tmp_1.arg1 = 15;
     r0 = (s.i___78892 * 25);
@@ -3966,7 +3966,7 @@ function test3__P78862_mk(s) {
 
 
 
-function conways_createMotion__P104261(s) {
+function conways_createMotion__P110777(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -3976,7 +3976,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.display___104769 = undefined;
+    s.display___111285 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -4001,38 +4001,38 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 8; continue; }
   case 1:
-    r0 = pxsim.image.ofBuffer(_hex104787);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111303);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 2:
-    r0 = pxsim.image.ofBuffer(_hex104790);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111306);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 3:
-    r0 = pxsim.image.ofBuffer(_hex104793);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111309);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 4:
-    r0 = pxsim.image.ofBuffer(_hex104796);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111312);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 5:
-    r0 = pxsim.image.ofBuffer(_hex104799);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111315);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 6:
-    r0 = pxsim.image.ofBuffer(_hex104802);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111318);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 7:
-    r0 = pxsim.image.ofBuffer(_hex104805);
-    s.display___104769 = (r0);
+    r0 = pxsim.image.ofBuffer(_hex111321);
+    s.display___111285 = (r0);
     { step = 9; continue; }
   case 8:
     { step = 10; continue; }
   case 9:
-    s.tmp_0 = conways_initalizeShape__P104728_mk(s);
-    s.tmp_0.arg0 = s.display___104769;
+    s.tmp_0 = conways_initalizeShape__P111244_mk(s);
+    s.tmp_0.arg0 = s.display___111285;
     s.tmp_0.arg1 = s.arg1;
     s.tmp_0.arg2 = s.arg2;
     s.callLocIdx = 82; s.pc = 11; return s.tmp_0;
@@ -4043,32 +4043,32 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-conways_createMotion__P104261.info = {"start":12154,"length":5213,"line":423,"column":4,"endLine":526,"endColumn":5,"fileName":"main.ts","functionName":"createMotion","argumentNames":["toDisplay","col","row"]}
+conways_createMotion__P110777.info = {"start":12184,"length":5213,"line":423,"column":4,"endLine":526,"endColumn":5,"fileName":"main.ts","functionName":"createMotion","argumentNames":["toDisplay","col","row"]}
 
-function conways_createMotion__P104261_mk(s) {
+function conways_createMotion__P110777_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_createMotion__P104261, depth: s.depth + 1,
+        parent: s, fn: conways_createMotion__P110777, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  display___104769: undefined,
+  display___111285: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
 } }
 
-const _hex104787 = pxsim.BufferMethods.createBufferFromHex("8704030003000000000100000101000010010000")
-const _hex104790 = pxsim.BufferMethods.createBufferFromHex("87040500040000000101000000100000001000000110000010110000")
-const _hex104793 = pxsim.BufferMethods.createBufferFromHex("870424000a000000000010010000000000001001000000000000000000000000000000000000000000000000000000000000000100000000000010100000000000000100010000000000101100000000001001001100000000000000000000000000000000000000000000000000000000000000000000000000010000000000000001000000000000000111010000000000000000000000000000001000000000000001110000000000001100000000000000000000000000000000000000001001001100000000100100110000000000111101000000000010100000000000000000000000000000101100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100100000000000010010000000000")
-const _hex104796 = pxsim.BufferMethods.createBufferFromHex("8704210015000000110000000000000000000000110000000000000000000000000000000000000000000000000000000000000000000000001001000000000000000000001001000000000000000000000000000000000000000000110000000000000000000000110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010010000000000000011010010100000000000001000010000100000000000001000010000100100000000000000000000000000000000001000000000000000000000001000100000000000000000000001010000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010010000000000000000000010010000000000")
-const _hex104799 = pxsim.BufferMethods.createBufferFromHex("870421000e000000110000000000000011000000000000000000000000000000000000000000000000100100000000000010010000000000000000000000000011000000000000001100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011010000000000100001000000000010000100000000000000000000000000100000000000000010001000000000000001010000000000001000000000000000000000000000000000000000000000001001000000000000100100")
-const _hex104802 = pxsim.BufferMethods.createBufferFromHex("8704270001000000010000000100000001000000010000000100000001000000010000000100000000000000010000000100000001000000010000000100000000000000000000000000000001000000010000000100000000000000000000000000000000000000000000000000000001000000010000000100000001000000010000000100000001000000000000000100000001000000010000000100000001000000")
-const _hex104805 = pxsim.BufferMethods.createBufferFromHex("87040500050000001100010001100000011001000001000001110100")
+const _hex111303 = pxsim.BufferMethods.createBufferFromHex("8704030003000000000100000101000010010000")
+const _hex111306 = pxsim.BufferMethods.createBufferFromHex("87040500040000000101000000100000001000000110000010110000")
+const _hex111309 = pxsim.BufferMethods.createBufferFromHex("870424000a000000000010010000000000001001000000000000000000000000000000000000000000000000000000000000000100000000000010100000000000000100010000000000101100000000001001001100000000000000000000000000000000000000000000000000000000000000000000000000010000000000000001000000000000000111010000000000000000000000000000001000000000000001110000000000001100000000000000000000000000000000000000001001001100000000100100110000000000111101000000000010100000000000000000000000000000101100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100100000000000010010000000000")
+const _hex111312 = pxsim.BufferMethods.createBufferFromHex("8704210015000000110000000000000000000000110000000000000000000000000000000000000000000000000000000000000000000000001001000000000000000000001001000000000000000000000000000000000000000000110000000000000000000000110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010010000000000000011010010100000000000001000010000100000000000001000010000100100000000000000000000000000000000001000000000000000000000001000100000000000000000000001010000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000010010000000000000000000010010000000000")
+const _hex111315 = pxsim.BufferMethods.createBufferFromHex("870421000e000000110000000000000011000000000000000000000000000000000000000000000000100100000000000010010000000000000000000000000011000000000000001100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011010000000000100001000000000010000100000000000000000000000000100000000000000010001000000000000001010000000000001000000000000000000000000000000000000000000000001001000000000000100100")
+const _hex111318 = pxsim.BufferMethods.createBufferFromHex("8704270001000000010000000100000001000000010000000100000001000000010000000100000000000000010000000100000001000000010000000100000000000000000000000000000001000000010000000100000000000000000000000000000000000000000000000000000001000000010000000100000001000000010000000100000001000000000000000100000001000000010000000100000001000000")
+const _hex111321 = pxsim.BufferMethods.createBufferFromHex("87040500050000001100010001100000011001000001000001110100")
 
 
 
 
-function conways_initalizeShape__P104728(s) {
+function conways_initalizeShape__P111244(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4078,16 +4078,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.bkgd___104842 = undefined;
-    s.x___104845 = undefined;
-    s.y___104851 = undefined;
+    s.bkgd___111358 = undefined;
+    s.x___111361 = undefined;
+    s.y___111367 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.arg2 = (s.lambdaArgs[2]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = conways_init__P104276_mk(s);
+    s.tmp_0 = conways_init__P110792_mk(s);
     s.tmp_0.arg0 = undefined;
     s.tmp_0.arg1 = undefined;
     s.callLocIdx = 83; s.pc = 5; return s.tmp_0;
@@ -4097,65 +4097,65 @@ switch (step) {
     s.callLocIdx = 84; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
-    s.bkgd___104842 = (r0);
-    s.x___104845 = (0);
+    s.bkgd___111358 = (r0);
+    s.x___111361 = (0);
   case 1:
-    s.tmp_1 = r0 = s.x___104845;
+    s.tmp_1 = r0 = s.x___111361;
     r0 = pxsim_ImageMethods.width(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
-    s.y___104851 = (0);
+    s.y___111367 = (0);
   case 2:
-    s.tmp_1 = r0 = s.y___104851;
+    s.tmp_1 = r0 = s.y___111367;
     r0 = pxsim_ImageMethods.height(s.arg0);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
-    s.tmp_3 = conways_setInBuffer__P104671_mk(s);
-    s.tmp_3.arg0 = s.bkgd___104842;
-    r0 = (s.arg1 + s.x___104845);
+    s.tmp_3 = conways_setInBuffer__P111187_mk(s);
+    s.tmp_3.arg0 = s.bkgd___111358;
+    r0 = (s.arg1 + s.x___111361);
     s.tmp_3.arg1 = r0;
-    r0 = (s.arg2 + s.y___104851);
+    r0 = (s.arg2 + s.y___111367);
     s.tmp_3.arg2 = r0;
-    r0 = pxsim_ImageMethods.getPixel(s.arg0, s.x___104845, s.y___104851);
+    r0 = pxsim_ImageMethods.getPixel(s.arg0, s.x___111361, s.y___111367);
     s.tmp_4 = r0;
     r0 = (s.tmp_4 != 0);
     s.tmp_3.arg3 = r0;
     s.callLocIdx = 85; s.pc = 7; return s.tmp_3;
   case 7:
     r0 = s.retval;
-    r0 = (s.y___104851 + 1);
-    s.y___104851 = (r0);
+    r0 = (s.y___111367 + 1);
+    s.y___111367 = (r0);
     { step = 2; continue; }
   case 3:
-    r0 = (s.x___104845 + 1);
-    s.x___104845 = (r0);
+    r0 = (s.x___111361 + 1);
+    s.x___111361 = (r0);
     { step = 1; continue; }
   case 4:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-conways_initalizeShape__P104728.info = {"start":18431,"length":326,"line":570,"column":4,"endLine":578,"endColumn":5,"fileName":"main.ts","functionName":"initalizeShape","argumentNames":["im","col","row"]}
+conways_initalizeShape__P111244.info = {"start":18461,"length":326,"line":570,"column":4,"endLine":578,"endColumn":5,"fileName":"main.ts","functionName":"initalizeShape","argumentNames":["im","col","row"]}
 
-function conways_initalizeShape__P104728_mk(s) {
+function conways_initalizeShape__P111244_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: conways_initalizeShape__P104728, depth: s.depth + 1,
+        parent: s, fn: conways_initalizeShape__P111244, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  bkgd___104842: undefined,
-  x___104845: undefined,
-  y___104851: undefined,
+  bkgd___111358: undefined,
+  x___111361: undefined,
+  y___111367: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -40084,7 +40084,7 @@ const sprites_BaseSpriteSayRenderer__C2024_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["width___104266","height___104267","updateHandler___104269","currentBuffer___104282","buffers___104281","scale___104268"])
+const breakpoints = setupDebugger(1, ["width___110782","height___110783","updateHandler___110785","currentBuffer___110798","buffers___110797","scale___110784"])
 
-return _main___P105141
+return _main___P111600
 })
