@@ -264,14 +264,14 @@ namespace conways {
             buffers[0][x] = [];
             buffers[1][x] = [];
         }
+        const bkgd = scene.backgroundImage();
 
         currentBuffer = 0;
 
         for (let x = 0; x < width; x++) {
             for (let y = 0; y < height; y++) {
-                buffers[0][x][y] = initState.getPixel(x, y) != 0;
+                setInBuffer(bkgd, x, y, initState.getPixel(x, y) != 0);
                 buffers[1][x][y] = false;
-
             }
         }
     }
@@ -570,11 +570,24 @@ namespace conways {
 
     function initalizeShape(im: Image, col: number, row: number) {
         init();
+        const bkgd = scene.backgroundImage();
         for (let x = 0; x < im.width; x++) {
             for (let y = 0; y < im.height; y++) {
-                buffers[currentBuffer][col + x][row + y] = im.getPixel(x, y) != 0;
+                setInBuffer(bkgd, col + x, row + y, im.getPixel(x, y) != 0);
             }
         }
+    }
+
+    function setInBuffer(bkgd: Image, col: number, row: number, alive?: boolean) {
+        buffers[currentBuffer][col][row] = alive;
+        bkgd.fillRect(
+            col * scale,
+            row * scale,
+            scale,
+            scale,
+            alive ? randint(1, 0xd) : 0
+        );
+
     }
 
     //% block="create $count random cells"
@@ -582,7 +595,9 @@ namespace conways {
     //% group="Shapes"
     //% weight=0
     export function createRandom(count: number) {
+        init();
+        const bkgd = scene.backgroundImage();
         for (let i = 0; i < count; ++i)
-            buffers[currentBuffer][randint(0, width - 1)][randint(0, width - 1)] = true;
+            setInBuffer(bkgd, randint(0, width - 1), randint(0, width - 1), true);
     }
 }
