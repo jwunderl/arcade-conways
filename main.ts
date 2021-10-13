@@ -113,10 +113,10 @@ namespace conways {
     let buffers: boolean[][][];
     let currentBuffer: number;
 
-    //% block="next generation"
+    //% block="start next generation"
     //% blockId="conwaysNextGeneration"
     //% group="Game of Life"
-    //% weight=90
+    //% weight=95
     export function nextGeneration() {
         init();
 
@@ -131,7 +131,7 @@ namespace conways {
         currentBuffer++;
     }
 
-    //% block="is alive at $col $row"
+    //% block="is alive at col $col row $row"
     //% blockId="conwaysGetState"
     //% group="Game of Life"
     //% weight=80
@@ -152,7 +152,7 @@ namespace conways {
         return dir
     }
 
-    //% block="is alive $dir of $col $row"
+    //% block="is alive $dir of col $col row $row"
     //% blockId="conwaysGetStateInDirection"
     //% dir.shadow=conwaysDirection
     //% group="Game of Life"
@@ -181,7 +181,7 @@ namespace conways {
         }
     }
 
-    //% block="set alive at $col $row $alive"
+    //% block="set alive at col $col row $row $alive"
     //% blockId="conwaysSetState"
     //% group="Game of Life"
     //% weight=90
