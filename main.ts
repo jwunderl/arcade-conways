@@ -1,4 +1,3 @@
-
 //% weight=99 color="#2d730f" icon="\uf471"
 //% block="Life"
 //% groups='["Game of Life", "Shapes"]'
@@ -144,7 +143,7 @@ namespace conways {
     }
 
     //% block="$dir"
-    //% blockId="conwaysDirectionEnum"
+    //% blockId=conwaysDirection
     //% group="Game of Life"
     //% weight=0
     //% shim=TD_ID
@@ -154,26 +153,26 @@ namespace conways {
 
     //% block="is alive $dir of $col $row"
     //% blockId="conwaysGetStateInDirection"
-    //% dir.defl="conwaysDirectionEnum"
+    //% dir.shadow=conwaysDirection
     //% group="Game of Life"
     //% weight=75
-    export function getStateInDirection(dir: conways.Direction, col: number, row: number) {
+    export function getStateInDirection(dir: number, col: number, row: number) {
         switch (dir) {
-            case Direction.North:
+            case conways.Direction.North:
                 return getState(col, row - 1);
-            case Direction.NorthEast:
+            case conways.Direction.NorthEast:
                 return getState(col + 1, row - 1);
-            case Direction.NorthWest:
+            case conways.Direction.NorthWest:
                 return getState(col - 1, row - 1);
-            case Direction.South:
+            case conways.Direction.South:
                 return getState(col, row + 1);
-            case Direction.SouthEast:
+            case conways.Direction.SouthEast:
                 return getState(col + 1, row + 1);
-            case Direction.SouthWest:
+            case conways.Direction.SouthWest:
                 return getState(col - 1, row + 1);
-            case Direction.East:
+            case conways.Direction.East:
                 return getState(col + 1, row);
-            case Direction.West:
+            case conways.Direction.West:
                 return getState(col - 1, row);
             // Should not hit, but if not direction go for center
             default:
