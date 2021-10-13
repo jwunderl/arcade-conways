@@ -20,4 +20,6 @@ function test3() {
     }
 }
 
-game.onUpdateInterval(100, conways.nextGeneration);
+game.onUpdateInterval(100, () => {
+    conways.nextGeneration()
+});
