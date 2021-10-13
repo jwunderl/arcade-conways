@@ -123,8 +123,8 @@ namespace conways {
 
         // leave 1 pixel of unused edge on each side
         // to avoid having to deal with oob checking
-        for (let col = 1; col < width - 1; ++col) {
-            for (let row = 1; row < height - 1; ++row) {
+        for (let col = 0; col < width; ++col) {
+            for (let row = 0; row < height; ++row) {
                 (updateHandler || applyRules)(col, row);
             }
         }
@@ -138,6 +138,8 @@ namespace conways {
     //% weight=80
     export function getState(col: number, row: number) {
         init();
+        if (col < 0 || col >= width || row < 0 || row >= height)
+            return false;
         const lastGeneration = buffers[currentBuffer % 2];
         return !!lastGeneration[col][row];
     }
@@ -186,6 +188,8 @@ namespace conways {
     //% weight=90
     export function setState(col: number, row: number, alive: boolean) {
         init();
+        if (col < 0 || col >= width || row < 0 || row >= height)
+            return;
 
         const lastGeneration = buffers[currentBuffer % 2];
         const currGeneration = buffers[(currentBuffer + 1) % 2];
@@ -212,14 +216,14 @@ namespace conways {
         const rY = y + 1; // right y
 
         let count = 0;
-        if (lastGeneration[lX][lY]) ++count;
-        if (lastGeneration[lX][y]) ++count;
-        if (lastGeneration[lX][rY]) ++count;
-        if (lastGeneration[x][lY]) ++count;
-        if (lastGeneration[x][rY]) ++count;
-        if (lastGeneration[rX][lY]) ++count;
-        if (lastGeneration[rX][y]) ++count;
-        if (lastGeneration[rX][rY]) ++count;
+        if (getState(lX, lY)) ++count;
+        if (getState(lX, y)) ++count;
+        if (getState(lX, rY)) ++count;
+        if (getState(x, lY)) ++count;
+        if (getState(x, rY)) ++count;
+        if (getState(rX, lY)) ++count;
+        if (getState(rX, y)) ++count;
+        if (getState(rX, rY)) ++count;
         return count;
     }
 
@@ -249,8 +253,8 @@ namespace conways {
             buffers[1][x] = [];
         }
 
-        for (let x = 1; x < width - 1; x++) {
-            for (let y = 1; y < height - 1; y++) {
+        for (let x = 0; x < width; x++) {
+            for (let y = 0; y < height; y++) {
                 buffers[0][x][y] = initState.getPixel(x, y) != 0;
                 buffers[1][x][y] = false;
             }
