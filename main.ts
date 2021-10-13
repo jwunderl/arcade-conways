@@ -119,11 +119,14 @@ namespace conways {
     //% weight=95
     export function nextGeneration() {
         init();
+        const lastGeneration = buffers[currentBuffer % 2];
+        const currGeneration = buffers[(currentBuffer + 1) % 2];
 
         // leave 1 pixel of unused edge on each side
         // to avoid having to deal with oob checking
         for (let col = 0; col < width; ++col) {
             for (let row = 0; row < height; ++row) {
+                currGeneration[col][row] = lastGeneration[col][row];
                 (updateHandler || applyRules)(col, row);
             }
         }
