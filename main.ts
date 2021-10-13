@@ -143,6 +143,14 @@ namespace conways {
         return !!lastGeneration[col][row];
     }
 
+    //% block="is dead at col $col row $row"
+    //% blockId="conwaysGetIsDead"
+    //% group="Game of Life"
+    //% weight=79
+    export function getIsDead(col: number, row: number) {
+        return !getState(col, row);
+    }
+
     //% block="$dir"
     //% blockId=conwaysDirection
     //% group="Game of Life"
@@ -179,6 +187,15 @@ namespace conways {
             default:
                 return getState(col, row);
         }
+    }
+
+    //% block="is dead $dir of col $col row $row"
+    //% blockId="conwaysGetIsDeadInDirection"
+    //% dir.shadow=conwaysDirection
+    //% group="Game of Life"
+    //% weight=74
+    export function getIsDeadInDirection(dir: number, col: number, row: number) {
+        return !getStateInDirection(dir, col, row);
     }
 
     //% block="set alive at col $col row $row $alive"
